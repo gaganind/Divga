@@ -1,9 +1,10 @@
 :root {
-    --primary-color: #6c63ff;
-    --secondary-color: #2d2d2d;
-    --accent-color: #ff6b6b;
+    --primary-color: #D4AF37;
+    --secondary-color: #1a1a1a;
+    --accent-color: #FFD700;
     --text-color: #333;
     --background-color: #ffffff;
+    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
 }
 
 * {
@@ -44,10 +45,30 @@ body {
     z-index: 100;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    width: 40px;
+    height: 40px;
+    background: var(--gold-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
 .logo-text {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-color);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -76,6 +97,7 @@ body {
 .hero-content {
     text-align: center;
     z-index: 2;
+    position: relative;
 }
 
 .glitch {
@@ -83,10 +105,10 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     position: relative;
-    text-shadow: 0.05em 0 0 var(--primary-color),
-                 -0.05em -0.025em 0 var(--accent-color),
-                 -0.025em 0.05em 0 var(--secondary-color);
-    animation: glitch 500ms infinite;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 @keyframes glitch {
@@ -184,30 +206,33 @@ section {
 
 .meaning-item {
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(212, 175, 55, 0.1);
     border-radius: 10px;
     backdrop-filter: blur(5px);
     transition: transform 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .meaning-item:hover {
     transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
 }
 
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background: var(--primary-color);
-    color: white;
+    background: var(--gold-gradient);
+    color: var(--secondary-color);
     text-decoration: none;
     border-radius: 30px;
     margin-top: 2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
 }
 
 .cta-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
 }
 
 footer {
@@ -217,6 +242,58 @@ footer {
     color: white;
 }
 
+/* Snake Game Styles */
+.snake-game-container {
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 2rem;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+#gameCanvas {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    display: block;
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.game-controls {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.game-score {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Coming Soon Section */
+.coming-soon {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--gold-gradient);
+    color: var(--secondary-color);
+    margin: 4rem 0;
+}
+
+.coming-soon h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.coming-soon p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .glitch {
         font-size: 4rem;
@@ -228,5 +305,47 @@ footer {
     
     .nav-links {
         display: none;
+    }
+
+    .snake-game-container {
+        padding: 1rem;
+    }
+
+    #gameCanvas {
+        height: 300px;
+    }
+}
+
+.contact-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 24px rgba(212, 175, 55, 0.15);
+}
+
+.contact-info h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .contact-profile {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .contact-photo {
+        width: 90px;
+        height: 90px;
     }
 } 
